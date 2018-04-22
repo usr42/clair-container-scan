@@ -12,7 +12,7 @@ services:
         - db
         restart: on-failure
     scanner:
-        image: usr42/clair-container-scan:latest
+        image: quay.io/usr42/clair-container-scan:latest
         links:
         - clair
         volumes:
