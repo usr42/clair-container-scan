@@ -1,0 +1,4 @@
+#!/bin/sh
+
+clair_ip=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2| cut -d' ' -f1)
+clair-scanner -c=http://clair:6060 --ip=$clair_ip "$@"
