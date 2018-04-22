@@ -1,6 +1,6 @@
 # Clair container scan
 ## Overview
-Automatically scan all local docker containers with [Clair Vulnerability Scanner](https://github.com/coreos/clair) using [Clair-Scanner](https://github.com/arminc/clair-scanner).
+Automatically scan all local docker containers with [Clair Vulnerability Scanner](https://github.com/coreos/clair) using [Clair-Scanner](https://github.com/arminc/clair-scanner) and [clair-local-scan](https://github.com/arminc/clair-local-scan).
 ## Quick start
 ### Scan all local containers
 To get json output of the clair scan of all running containers to standard out just run:
@@ -23,3 +23,10 @@ docker-compose run --rm scanner cs
 ## Prerequisites
 * Docker
 * docker-compose
+
+## Credits
+* Docker
+* docker-compose
+* [Clair Vulnerability Scanner](https://github.com/coreos/clair)
+* [Clair-Scanner](https://github.com/arminc/clair-scanner) (release v8 is included)
+* [clair-local-scan](https://github.com/arminc/clair-local-scan).
