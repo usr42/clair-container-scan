@@ -5,7 +5,7 @@ services:
         image: quay.io/usr42/clair-db:latest
         restart: on-failure
     clair:
-        image: quay.io/usr42/clair-local-scan:v2.0.2
+        image: arminc/clair-local-scan:v2.0.1
         links:
         - db:postgres
         depends_on:
