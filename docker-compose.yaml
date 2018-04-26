@@ -2,7 +2,7 @@ version: '3'
 
 services:
     db:
-        image: quay.io/usr42/clair-db:latest
+        image: arminc/clair-db:latest
         restart: on-failure
     clair:
         image: arminc/clair-local-scan:v2.0.1
