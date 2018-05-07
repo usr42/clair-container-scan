@@ -6,7 +6,7 @@ services:
         restart: on-failure
         healthcheck:
             test: nc -z db 5432
-            interval: 1s
+            interval: 500ms
             timeout: 5s
             retries: 10
     clair:
@@ -18,8 +18,8 @@ services:
                 condition: service_healthy
         restart: on-failure
         healthcheck:
-            test: nc -z clair 6060
-            interval: 1s
+            test: nc -z clair 6060 && nc -z clair 6061
+            interval: 500ms
             timeout: 5s
             retries: 10
     scanner:
