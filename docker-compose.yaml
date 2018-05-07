@@ -23,7 +23,7 @@ services:
             timeout: 5s
             retries: 10
     scanner:
-        image: quay.io/usr42/clair-container-scan:latest
+        image: quay.io/usr42/clair-container-scan:v0.1
         links:
         - clair
         volumes:
