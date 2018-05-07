@@ -1,16 +1,27 @@
-version: '3'
+version: '2.4'
 
 services:
     db:
         image: arminc/clair-db:latest
         restart: on-failure
+        healthcheck:
+            test: nc -z db 5432
+            interval: 500ms
+            timeout: 5s
+            retries: 10
     clair:
         image: arminc/clair-local-scan:v2.0.1
         links:
         - db:postgres
         depends_on:
-        - db
+            db:
+                condition: service_healthy
         restart: on-failure
+        healthcheck:
+            test: nc -z clair 6060 && nc -z clair 6061
+            interval: 500ms
+            timeout: 5s
+            retries: 10
     scanner:
         image: quay.io/usr42/clair-container-scan:latest
         links:
@@ -18,4 +29,5 @@ services:
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock:ro
         depends_on:
-        - clair
+            clair:
+                condition: service_healthy
