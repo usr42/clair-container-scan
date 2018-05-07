@@ -10,7 +10,7 @@ services:
             timeout: 5s
             retries: 10
     clair:
-        image: arminc/clair-local-scan:v2.0.1
+        image: quay.io/usr42/clair-local-scan:v2.0.3
         links:
         - db:postgres
         depends_on:
