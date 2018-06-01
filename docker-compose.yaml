@@ -6,6 +6,7 @@ services:
         restart: on-failure
         healthcheck:
             test: nc -z db 5432
+            interval: 3s
     clair:
         image: arminc/clair-local-scan:v2.0.3
         links:
@@ -16,6 +17,7 @@ services:
         restart: on-failure
         healthcheck:
             test: nc -z clair 6060 && nc -z clair 6061
+            interval: 3s
     scanner:
         image: quay.io/usr42/clair-container-scan:v0.1
         links:
