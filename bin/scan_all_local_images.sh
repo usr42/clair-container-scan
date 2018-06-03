@@ -8,5 +8,8 @@ done
 
 if [ -n "$(ls -A /tmp/report)" ]
 then
-    jq -sM . /tmp/report/*
+    jq -sM . /tmp/report/* | jq '[.[] | select (.vulnerabilities != []) | {image: .image, vulnerabilities: .vulnerabilities}]'|grep -v '^\[\]$' && exit 1 || exit 0
+else
+    echo "No image scanned."
+    exit 1
 fi
