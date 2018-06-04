@@ -3,5 +3,5 @@
 if [ "$#" -eq 0 ]; then
     scan_all_local_images.sh
 else
-    cs "$@"
+    scan_images.sh "$@"
 fi
