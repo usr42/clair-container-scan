@@ -21,7 +21,7 @@ services:
             interval: 1s
             retries: 20
     scanner:
-        image: quay.io/usr42/clair-container-scan:v0.1
+        image: quay.io/usr42/clair-container-scan:latest
         links:
         - clair
         volumes:
