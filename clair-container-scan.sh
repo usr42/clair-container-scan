@@ -32,11 +32,9 @@ while getopts ":phv" opt; do
     case $opt in
         p)
             PULL=1
-            shift
             ;;
         v)
             VERBOSE=1
-            shift
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -47,6 +45,7 @@ while getopts ":phv" opt; do
             ;;
     esac
 done
+shift $(($OPTIND -1))
 
 BASEDIR=$(cd $(dirname "$0") && pwd)
 cd "$BASEDIR"
