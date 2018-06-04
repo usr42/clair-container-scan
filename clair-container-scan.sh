@@ -49,6 +49,11 @@ shift $(($OPTIND -1))
 
 BASEDIR=$(cd $(dirname "$0") && pwd)
 cd "$BASEDIR"
+
+if [ ! -f "docker-compose.yaml" ]; then
+    wget -q https://raw.githubusercontent.com/usr42/clair-container-scan/master/docker-compose.yaml
+fi
+
 [ "$PULL" = 1 ] && redirect_all docker-compose pull
 redirect_stderr docker-compose run --rm scanner "$@"
 ret=$?
