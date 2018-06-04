@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 usage() {
     echo "Usage: $0 [-p]"
@@ -10,7 +10,7 @@ usage() {
 }
 
 redirect_stderr() {
-    if [ "$VERBOSE" == 1 ]; then
+    if [ "$VERBOSE" = 1 ]; then
         "$@"
     else
         "$@" 2>/dev/null
@@ -18,7 +18,7 @@ redirect_stderr() {
 }
 
 redirect_all() {
-    if [ "$VERBOSE" == 1 ]; then
+    if [ "$VERBOSE" = 1 ]; then
         "$@"
     else
         "$@" 2>/dev/null >/dev/null
@@ -49,7 +49,7 @@ shift $(($OPTIND -1))
 
 BASEDIR=$(cd $(dirname "$0") && pwd)
 cd "$BASEDIR"
-[ "$PULL" == 1 ] && redirect_all docker-compose pull
+[ "$PULL" = 1 ] && redirect_all docker-compose pull
 redirect_stderr docker-compose run --rm scanner "$@"
 ret=$?
 redirect_all docker-compose down
