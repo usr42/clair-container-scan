@@ -5,15 +5,37 @@ usage() {
     echo
     echo "Options:"
     echo " -p : Pull images before running scan"
+    echo " -v : verbose output"
     exit 1
 }
 
-PULL=0
+redirect_stderr() {
+    if [ "$VERBOSE" == 1 ]; then
+        "$@"
+    else
+        "$@" 2>/dev/null
+    fi
+}
 
-while getopts ":ph" opt; do
+redirect_all() {
+    if [ "$VERBOSE" == 1 ]; then
+        "$@"
+    else
+        "$@" 2>/dev/null >/dev/null
+    fi
+}
+
+PULL=0
+VERBOSE=0
+
+while getopts ":phv" opt; do
     case $opt in
         p)
             PULL=1
+            shift
+            ;;
+        v)
+            VERBOSE=1
             shift
             ;;
         \?)
@@ -27,10 +49,9 @@ while getopts ":ph" opt; do
 done
 
 BASEDIR=$(cd $(dirname "$0") && pwd)
-
 cd "$BASEDIR"
-[ "$PULL" == 1 ] && docker-compose pull
-docker-compose run --rm scanner "$@" #2>/dev/null
+[ "$PULL" == 1 ] && redirect_all docker-compose pull
+redirect_stderr docker-compose run --rm scanner "$@"
 ret=$?
-docker-compose down #>/dev/null 2>&1
+redirect_all docker-compose down
 exit $ret
