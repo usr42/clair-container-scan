@@ -3,10 +3,12 @@ version: '2.4'
 services:
     db:
         image: arminc/clair-db:latest
+        #image: postgres:10.4-alpine
         restart: on-failure
         healthcheck:
             test: nc -z db 5432
-            interval: 3s
+            interval: 1s
+            retries: 20
     clair:
         image: arminc/clair-local-scan:v2.0.3
         links:
@@ -17,9 +19,10 @@ services:
         restart: on-failure
         healthcheck:
             test: nc -z clair 6060 && nc -z clair 6061
-            interval: 3s
+            interval: 1s
+            retries: 20
     scanner:
-        image: quay.io/usr42/clair-container-scan:v0.1
+        image: clair-container-scan:tmp1
         links:
         - clair
         volumes:
