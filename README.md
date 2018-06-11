@@ -43,4 +43,4 @@ __WARNING:__ You should never pipe a remote-script directly into a shell, unless
 * docker-compose
 * [Clair Vulnerability Scanner](https://github.com/coreos/clair)
 * [Clair-Scanner](https://github.com/arminc/clair-scanner) (release v8 is included)
-* [clair-local-scan](https://github.com/arminc/clair-local-scan).
+* [clair-local-scan](https://github.com/arminc/clair-local-scan)
