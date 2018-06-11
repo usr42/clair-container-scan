@@ -7,18 +7,22 @@ Automatically scan all local docker containers with [Clair Vulnerability Scanner
 ### Scan all local containers
 To get json output of the clair scan of all running containers to standard out just run:
 ```bash
-docker-compose run --rm scanner 2>/dev/null && docker-compose down >/dev/null 2>&1
+./clair-container-scan.sh
 ```
+The output will be empty and the return code will be zero, if no CVE was found.
+If there are findings, the output will list details in json.
 
+You can use the `-v` flag to add verbose output, in case of a problem.
 ### Scan a particular local image
 To scan one particular local image just specify the image name as parameter:
 ```
 # To scan alpine:3.4 run:
-docker-compose run --rm scanner alpine:3.4
-# clean up
-docker-compose down
+./clair-container-scan.sh alpine:3.4
 ```
 
+The output will be empty and the return code will be zero, if no CVE was found.
+
+If there are findings, the output will list details in json.
 ## Prerequisites
 * Docker
 * docker-compose
