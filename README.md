@@ -1,7 +1,7 @@
 # Clair container scan
 
 ## Overview
-Automatically scan all local docker containers with [Clair Vulnerability Scanner](https://github.com/coreos/clair) using [Clair-Scanner](https://github.com/arminc/clair-scanner) and [clair-local-scan](https://github.com/arminc/clair-local-scan).
+Automatically scan a particular local docker image or all local docker containers with [Clair Vulnerability Scanner](https://github.com/coreos/clair) using [Clair-Scanner](https://github.com/arminc/clair-scanner) and [clair-local-scan](https://github.com/arminc/clair-local-scan).
 
 ## Quick start
 ### Scan all local containers
@@ -24,8 +24,8 @@ The output will be empty and the return code will be zero, if no CVE was found.
 
 If there are findings, the output will list details in json.
 ## Prerequisites
-* Docker
-* docker-compose
+* Docker 1.12 or newer
+* docker-compose 1.9.0 or newer
 
 ## Credits
 * Docker
