@@ -1,7 +1,7 @@
 #!/bin/sh
 
 usage() {
-    echo "Usage: $0 [-p]"
+    echo "Usage: $0 [-pv] [IMAGE_NAME]"
     echo
     echo "Options:"
     echo " -p : Pull images before running scan"
