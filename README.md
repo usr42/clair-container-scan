@@ -1,5 +1,7 @@
 # Clair container scan
 
+[![Anchore Image Overview](https://anchore.io/service/badges/image/923800b84ee17ca944dd7b09abf304b3aee111fa80543b2b6c536352a582429f)](https://anchore.io/image/dockerhub/usr42%2Fclair-container-scan%3Alatest)
+
 ## Overview
 Automatically scan a particular local docker image or all local docker containers with [Clair Vulnerability Scanner](https://github.com/coreos/clair) using [Clair-Scanner](https://github.com/arminc/clair-scanner) and [clair-local-scan](https://github.com/arminc/clair-local-scan).
 
