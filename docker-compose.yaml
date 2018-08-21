@@ -9,7 +9,7 @@ services:
             interval: 1s
             retries: 20
     clair:
-        image: arminc/clair-local-scan:v2.0.3
+        image: arminc/clair-local-scan:v2.0.4
         links:
         - db:postgres
         depends_on:
