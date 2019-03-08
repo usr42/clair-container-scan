@@ -13,17 +13,18 @@ Automatically scan a particular local docker image or all local docker container
 ### Scan all local containers
 To get json output of the clair scan of all running containers to standard out just run:
 ```bash
-./clair-container-scan.sh
+./clair-container-scan.sh -p
 ```
 The output will be empty and the return code will be zero, if no CVE was found.
 If there are findings, the output will list details in json.
 
+You should always add the `-p` flag to get the latest CVE database version.
 You can use the `-v` flag to add verbose output, in case of a problem.
 ### Scan a particular local image
 To scan one particular local image just specify the image name as parameter:
 ```
 # To scan alpine:3.4 run:
-./clair-container-scan.sh alpine:3.4
+./clair-container-scan.sh -p alpine:3.4
 ```
 
 The output will be empty and the return code will be zero, if no CVE was found.
